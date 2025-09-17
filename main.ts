@@ -22,3 +22,6 @@ addBtn.addEventListener("click", (e: Event) => {
   toDoList.addTask(taskName, selectedPriority);
   taskInput.value = "";
 });
+filterPriority.addEventListener("change", () => {
+  toDoList.displayTasks();
+});
