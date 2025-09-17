@@ -10,6 +10,7 @@ const filterPriority = document.getElementById(
 ) as HTMLSelectElement;
 
 const toDoList: ToDoList = new ToDoList();
+toDoList.displayTasks();
 
 addBtn.addEventListener("click", (e: Event) => {
   e.preventDefault();

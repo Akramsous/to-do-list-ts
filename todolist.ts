@@ -10,6 +10,7 @@ export default class ToDoList {
     const item: ToDoItem = new ToDoItem(Date.now(), taskName, taskPriority);
     this.tasks.push(item);
     this.saveTasks();
+    this.displayTasks();
   }
   //save tasks function which saves tasks to local storage
   saveTasks(): void {
