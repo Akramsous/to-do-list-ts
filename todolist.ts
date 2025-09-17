@@ -41,6 +41,13 @@ export default class ToDoList {
       this.saveTasks();
     }
   }
+  editTask(id: number, name: string): void {
+    const task = this.tasks.find((t) => t.getId() === id);
+    if (task) {
+      task.setName(name);
+    }
+    this.saveTasks();
+  }
   // display tasks and while adding tasks it also adds event listeners
   displayTasks(): void {
     const filterPriority = document.getElementById(
@@ -70,39 +77,49 @@ export default class ToDoList {
         "li",
         `task-item priority-${task.getPriority()}`
       ) as HTMLLIElement;
-
+      //checkbox
       const checkBox = createEl("input", "task-checkbox") as HTMLInputElement;
       checkBox.type = "checkbox";
       checkBox.checked = task.isCompleted();
-
+      //checkbox event listeners
+      checkBox.addEventListener("change", () => {
+        this.markCompleted(task.getId(), checkBox.checked);
+        this.displayTasks();
+      });
+      //task name span
       const spanTask = createEl(
         "span",
         `task${task.isCompleted() ? " completed" : ""}`,
         task.getName()
       ) as HTMLSpanElement;
-
+      //save button creating
       const saveBtn = createEl(
         "button",
         "save-btn d-none",
         "Save"
       ) as HTMLButtonElement;
+      //cancel button creating
       const cancelBtn = createEl(
         "button",
         "cancel-btn d-none",
         "Cancel"
       ) as HTMLButtonElement;
+      //edit button creation
       const editBtn = createEl(
         "button",
         "edit-task",
         "Edit"
       ) as HTMLButtonElement;
       if (task.isCompleted()) editBtn.classList.add("completed");
+      //delete button creation
       const deleteBtn = createEl("button", "delete", "X") as HTMLButtonElement;
+      //delete button event lestiners
       deleteBtn.addEventListener("click", () => {
         this.deleteTask(task.getId());
         this.displayTasks();
       });
 
+      //edit button listeners to change the delete and edit buttons to sava and cancel buttons and make the span editable
       editBtn.addEventListener("click", () => {
         if (task.isCompleted()) return;
         saveBtn.classList.remove("d-none");
@@ -114,6 +131,46 @@ export default class ToDoList {
         spanTask.classList.add("editting-span");
       });
 
+      //save button event listener
+      saveBtn.addEventListener("click", (e: Event) => {
+        const target = e.target as HTMLElement;
+        const li = target.closest("li") as HTMLLIElement;
+
+        if (!li) return;
+        const spanTask = li.querySelector(".task") as HTMLSpanElement;
+        const saveBtn = li.querySelector(".save-btn") as HTMLButtonElement;
+        const cancelBtn = li.querySelector(".cancel-btn") as HTMLButtonElement;
+        const editBtn = li.querySelector(".edit-task") as HTMLButtonElement;
+        const deleteBtn = li.querySelector(".delete") as HTMLButtonElement;
+
+        this.editTask(task.getId(), spanTask.textContent?.trim() || "");
+        saveBtn.classList.add("d-none");
+        cancelBtn.classList.add("d-none");
+        editBtn.classList.remove("d-none");
+        deleteBtn.classList.remove("d-none");
+        spanTask.classList.remove("editting-span");
+        spanTask.contentEditable = "false";
+      });
+      //cancel button event listener
+      cancelBtn.addEventListener("click", (e: Event) => {
+        const target = e.target as HTMLElement;
+        const li = target.closest("li") as HTMLLIElement;
+
+        if (!li) return;
+        const spanTask = li.querySelector(".task") as HTMLSpanElement;
+        const saveBtn = li.querySelector(".save-btn") as HTMLButtonElement;
+        const cancelBtn = li.querySelector(".cancel-btn") as HTMLButtonElement;
+        const editBtn = li.querySelector(".edit-task") as HTMLButtonElement;
+        const deleteBtn = li.querySelector(".delete") as HTMLButtonElement;
+        spanTask.textContent = task.getName();
+        saveBtn.classList.add("d-none");
+        cancelBtn.classList.add("d-none");
+        editBtn.classList.remove("d-none");
+        deleteBtn.classList.remove("d-none");
+        spanTask.classList.remove("editting-span");
+        spanTask.contentEditable = "false";
+      });
+      //appending the li elemnts
       const buttonContainer = document.createElement("div");
       buttonContainer.className = "button-container";
       buttonContainer.append(saveBtn, cancelBtn, editBtn, deleteBtn);

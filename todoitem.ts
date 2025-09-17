@@ -31,4 +31,21 @@ export default class ToDoItem {
   setCompleted(completed: boolean): void {
     this.completed = completed;
   }
+  setName(name: string) {
+    this.name = name;
+  }
+
+  toJSON(): {
+    id: number;
+    name: string;
+    priority: priority;
+    completed: boolean;
+  } {
+    return {
+      id: this.id,
+      name: this.name,
+      priority: this.priority,
+      completed: this.completed,
+    };
+  }
 }
