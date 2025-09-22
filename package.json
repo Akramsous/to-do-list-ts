@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Akramsous/to-do-list-ts#readme",
   "devDependencies": {
     "eslint": "^9.35.0",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2"
   }
 }
