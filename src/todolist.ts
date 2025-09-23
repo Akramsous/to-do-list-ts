@@ -6,7 +6,7 @@ export default class ToDoList {
     this.loadTasks();
   }
   addTask(taskName: string, taskPriority: priority): void {
-    const item: ToDoItem = new ToDoItem(Date.now(), taskName, taskPriority);
+    const item = new ToDoItem(Date.now(), taskName, taskPriority);
     this.tasks.push(item);
     this.saveTasks();
     this.displayTasks();
@@ -24,7 +24,7 @@ export default class ToDoList {
           name: string;
           priority: priority;
           completed: boolean;
-        }) => new ToDoItem(t.id, t.name, t.priority, t.completed)
+        }) => new ToDoItem(t.id, t.name, t.priority, t.completed),
       );
     }
   }
@@ -51,7 +51,7 @@ export default class ToDoList {
   // display tasks and while adding tasks it also adds event listeners
   displayTasks(): void {
     const filterPriority = document.getElementById(
-      "filter-priority"
+      "filter-priority",
     ) as HTMLSelectElement;
     const taskList = document.getElementById("task-list") as HTMLUListElement;
     taskList.innerHTML = "";
@@ -64,7 +64,7 @@ export default class ToDoList {
     const createEl = (
       tag: string,
       btnClass: string,
-      text = ""
+      text = "",
     ): HTMLElement => {
       const btn = document.createElement(tag);
       btn.className = btnClass;
@@ -75,7 +75,7 @@ export default class ToDoList {
     tasks.forEach((task) => {
       const li = createEl(
         "li",
-        `task-item priority-${task.getPriority()}`
+        `task-item priority-${task.getPriority()}`,
       ) as HTMLLIElement;
       //checkbox
       const checkBox = createEl("input", "task-checkbox") as HTMLInputElement;
@@ -90,25 +90,25 @@ export default class ToDoList {
       const spanTask = createEl(
         "span",
         `task${task.isCompleted() ? " completed" : ""}`,
-        task.getName()
+        task.getName(),
       ) as HTMLSpanElement;
       //save button creating
       const saveBtn = createEl(
         "button",
         "save-btn d-none",
-        "Save"
+        "Save",
       ) as HTMLButtonElement;
       //cancel button creating
       const cancelBtn = createEl(
         "button",
         "cancel-btn d-none",
-        "Cancel"
+        "Cancel",
       ) as HTMLButtonElement;
       //edit button creation
       const editBtn = createEl(
         "button",
         "edit-task",
-        "Edit"
+        "Edit",
       ) as HTMLButtonElement;
       if (task.isCompleted()) editBtn.classList.add("completed");
       //delete button creation

@@ -12,7 +12,7 @@ export default class ToDoItem {
     id: number,
     name: string,
     priority: priority,
-    completed: boolean = false
+    completed: boolean = false,
   ) {
     this.id = id;
     this.name = name;
