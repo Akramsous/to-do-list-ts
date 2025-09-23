@@ -1,19 +1,14 @@
 export enum priority {
-  low = "low",
-  medium = "medium",
-  high = "high",
+  low = 'low',
+  medium = 'medium',
+  high = 'high',
 }
 export default class ToDoItem {
   private id: number;
   private name: string;
   private priority: priority;
   private completed: boolean;
-  constructor(
-    id: number,
-    name: string,
-    priority: priority,
-    completed: boolean = false,
-  ) {
+  constructor(id: number, name: string, priority: priority, completed: boolean = false) {
     this.id = id;
     this.name = name;
     this.priority = priority;

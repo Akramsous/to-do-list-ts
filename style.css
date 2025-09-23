@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Story+Script&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
 
 * {
   margin: 0;
@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  font-family: "Story Script", cursive;
+  font-family: 'Story Script', cursive;
   background: #7cb1ec;
 }
 
