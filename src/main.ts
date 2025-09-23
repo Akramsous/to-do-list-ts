@@ -1,5 +1,5 @@
 import ToDoList from "./todolist.js";
-import type { priority } from "./todoitem.js";
+import { priority } from "./todoitem.js";
 const taskInput = document.querySelector(".task-input") as HTMLInputElement;
 const taskPriority = document.querySelector(
   ".task-priority"

@@ -1,5 +1,4 @@
-import ToDoItem from "./todoitem.js";
-import type { priority } from "./todoitem.js";
+import ToDoItem, { priority } from "./todoitem.js";
 export default class ToDoList {
   private tasks: ToDoItem[];
   constructor() {
