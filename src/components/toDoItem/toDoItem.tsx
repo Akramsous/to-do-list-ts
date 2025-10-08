@@ -1,5 +1,5 @@
 import React from 'react';
-import { type Todo, toggleCompleted } from '../../store/todo/todoSlice';
+import { type Todo, toggleCompleted,deleteTask} from '../../store/todo/todoSlice';
 import { useAppDispatch } from '../../store/hooks';
 import './toDoItem.css';
 interface Props {
@@ -21,7 +21,7 @@ export const ToDoItem: React.FC<Props> = ({ task }) => {
       <div className="button-container">
         <>
           <button className={`edit-task ${task.completed ? 'completed' : ''}`}>Edit</button>
-          <button className="delete">X</button>
+          <button className="delete" onClick={() =>dispatch(deleteTask(task.id))}>X</button>
         </>
       </div>
     </li>
