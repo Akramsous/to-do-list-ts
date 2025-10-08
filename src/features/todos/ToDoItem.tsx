@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { type Todo, toggleCompleted } from '../todos/todoSlice';
+import { useAppDispatch } from '../../app/hooks';
+interface Props {
+  task: Todo;
+}
 
-interface Props {}
-
-export const ToDoItem: React.FC<Props> = () => {
+export const ToDoItem: React.FC<Props> = ({ task }) => {
+  const dispatch = useAppDispatch();
   return (
-    <li className={'task-item priority'}>
-      <input type="checkbox" />
+    <li className={`task-item priority-${task.priority}`}>
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={() => dispatch(toggleCompleted(task.id))}
+      />
 
-      <span className="task-name"></span>
+      <span className={`task${task.completed ? ' completed' : ''}`}>{task.name}</span>
 
       <div className="button-container">
         <>
-          <button className="edit-task ">Edit</button>
+          <button className={`edit-task ${task.completed ? 'completed' : ''}`}>Edit</button>
           <button className="delete">X</button>
         </>
       </div>
