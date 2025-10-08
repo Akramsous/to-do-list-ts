@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Story Script', cursive;
+  background: #7cb1ec;
+}
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.task-input {
+  width: 400px;
+}
+
+.task-input,
+.task-priority,
+.add-task-button,
+.cancel-edit {
+  padding: 10px;
+  border: 3px solid #ca05f6;
+  background-color: rgba(177, 15, 80, 0.164);
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.task-priority,
+.add-task-button,
+.cancel-edit {
+  border-radius: 20px;
+}
+
+.add-task-button,
+.cancel-edit {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-task-button:hover,
+.cancel-edit:hover {
+  background: #357abd;
+}
+
+.filter {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter select {
+  padding: 8px;
+  border-radius: 20px;
+  border: 3px solid #ca05f6;
+  background-color: rgba(177, 15, 80, 0.164);
+}
+
+.filter select option {
+  color: #ca05f6;
+  background-color: #f0e6f8;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+.task-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.priority-low {
+  border-left: 5px solid green;
+}
+
+.priority-medium {
+  border-left: 5px solid orange;
+}
+
+.priority-high {
+  border-left: 5px solid red;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+.task-item:hover {
+  background: #e6e6e6;
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+.delete,
+.edit-task,
+.save-btn,
+.cancel-btn {
+  border: 2px solid #ca05f6;
+  background: linear-gradient(135deg, #f06, #4a90e2);
+  border-radius: 15px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 4px;
+}
+.edit-task.completed {
+  background: gray;
+  color: white;
+  cursor: not-allowed;
+}
+.d-none {
+  display: none;
+}
+.editting-span {
+  border: 1px solid #000;
+  padding: 4px;
+  border-radius: 4px;
+}
