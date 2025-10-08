@@ -1,6 +1,7 @@
 import React from 'react';
-import { type Todo, toggleCompleted } from '../todos/todoSlice';
-import { useAppDispatch } from '../../app/hooks';
+import { type Todo, toggleCompleted } from '../../store/todo/todoSlice';
+import { useAppDispatch } from '../../store/hooks';
+import './toDoItem.css';
 interface Props {
   task: Todo;
 }

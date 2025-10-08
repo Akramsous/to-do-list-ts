@@ -1,5 +1,5 @@
-import { AddTaskForm } from './features/todos/AddTaskForm';
-import ToDoList from './features/todos/ToDoList';
+import { AddTaskForm } from './components/addTaskForm/addTaskForm';
+import ToDoList from './components/toDoList/toDoList';
 
 export default function App() {
   return (

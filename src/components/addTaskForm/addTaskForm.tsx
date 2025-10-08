@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import type { taskPriority } from '../todos/todoSlice';
-import { useAppDispatch } from '../../app/hooks';
-import { addTask } from '../todos/todoSlice';
+import type { taskPriority } from '../../store/todo/todoSlice';
+import { useAppDispatch } from '../../store/hooks';
+import { addTask } from '../../store/todo/todoSlice';
+import './addTaskForm.css';
 export const AddTaskForm: React.FC = () => {
   const [name, setName] = useState('');
   const [priority, setPriority] = useState<taskPriority>('low');
