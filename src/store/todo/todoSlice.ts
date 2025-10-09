@@ -35,12 +35,18 @@ const toDoSlice = createSlice({
       }
     },
     deleteTask: (state, action: PayloadAction<number>) => {
-      state.tasks = state.tasks.filter(t => t.id !== action.payload);
+      state.tasks = state.tasks.filter((t) => t.id !== action.payload);
     },
-     setFilter: (state, action: PayloadAction<'all' | 'low' | 'medium' | 'high'>) => {
+    setFilter: (state, action: PayloadAction<'all' | 'low' | 'medium' | 'high'>) => {
       state.filter = action.payload;
+    },
+    editTask: (state, action: PayloadAction<{ id: number; name: string }>) => {
+      const task = state.tasks.find((t) => t.id === action.payload.id);
+      if (task && task.name !== action.payload.name) {
+        task.name = action.payload.name;
+      }
     },
   },
 });
-export const { addTask, toggleCompleted,deleteTask,setFilter } = toDoSlice.actions;
+export const { addTask, toggleCompleted, deleteTask, setFilter, editTask } = toDoSlice.actions;
 export default toDoSlice.reducer;
